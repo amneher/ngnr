@@ -1,0 +1,17 @@
+{% extends 'blog_main.html' %}
+
+{% block content %}
+
+
+	{% for post in posts %}
+		<div>
+			<h3>{{ post.title }}</h3>
+			<h4>{{ post.author }} - {{ post.created }}</h4>
+			<p>{{ post.content }}</p>
+		</div>
+	{% endfor %}
+
+
+
+
+{% endblock %}
