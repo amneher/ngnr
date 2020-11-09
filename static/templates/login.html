@@ -8,16 +8,21 @@
 <li class="nav-item">
     <a class="nav-link" href={% url 'blog' %}>Blog</a>
 </li>
+{% if user.is_authenticated %}
 <li class="nav-item">
-    <a class="nav-link" href={% url 'home' %}>Resume</a>
+    <a class="nav-link" href={% url 'logout' %}>Log Out</a>
 </li>
 <li class="nav-item">
-    <!-- highlight active page -->
+    <a class="nav-link" href={% url 'settings' %}>Settings</a>
+</li>
+{% else %}
+<li class="nav-item">
     <a class="nav-link text-info" href={% url 'login' %}>Log In</a>
 </li>
 <li class="nav-item">
     <a class="nav-link" href={% url 'signup' %}>Sign Up</a>
 </li>
+{% endif %}
 {% endblock %}
 
 
