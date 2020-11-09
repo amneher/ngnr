@@ -1,0 +1,44 @@
+{% extends 'home.html' %}
+
+
+{% block nav %}
+<li class="nav-item">
+    <a class="nav-link" href={% url 'home' %}>Home</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href={% url 'blog' %}>Blog</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href={% url 'resume' %}>Resume</a>
+</li>
+<li class="nav-item">
+    <!-- highlight active page -->
+    <a class="nav-link text-info" href={% url 'login' %}>Log In</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href={% url 'signup' %}>Sign Up</a>
+</li>
+{% endblock %}
+
+
+        {% block content %}
+        <div class='container-fluid' style="margin-top: 30px">
+            <div class='row'>
+                <div class='col-sm-4'>
+                </div>
+                <div class='col-sm-4'>
+                    <h2>Login</h2>
+                    <form method="post">
+                        {% csrf_token %}
+                        {{  form.as_p }}
+                    
+                        <button type="submit">Login</button>
+                
+                    </form>
+                    <br>
+                    <p><strong>-- OR --</strong></p>
+                    <a href="{% url 'social:begin' 'github' %}">Login with GitHub</a><br>
+                </div>
+            </div>
+        </div>
+        {% endblock %}

@@ -1,0 +1,69 @@
+<!doctype html>
+<head>
+    <meta charset="utf-8">
+    <title>NGNR</title>
+    {% load bootstrap4 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+
+<body>
+    <div class='wrapper'>
+        <div class="jumbotron text-center">
+            <h1 class="display-3"><a href={% url 'home' %} class='text-body' >NGNR: the personal project site of Andrew Neher</a></h1><br><br>
+            <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+                <a class="navbar-brand" href={% url 'settings' %}>Hello {{ user.username }}!</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                    <span class="navbar-toggler-icon">nav</span>
+                </button>
+                <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                    <ul class="navbar-nav">
+                        {% block nav %}
+                        <li class="nav-item">
+                            <!-- highlight active page -->
+                            <a class="nav-link text-info" href={% url 'home' %}>Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href={% url 'blog' %}>Blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href={% url 'home' %}>Resume</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href={% url 'login' %}>Log In</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href={% url 'signup' %}>Sign Up</a>
+                        </li>
+                        {% endblock %}
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        {% block content %}
+        <div class='container-fluid' style="margin-top: 30px">
+            <!-- my list of projects goes here -->
+            <div class='row'>
+                <div class='col-sm-4'></div>
+                <div class='col-sm-4'><h2><small><a class='text-body' href='https://github.com/amneher' >My Github</a></small></h2></div>
+            </div>
+            <div class='row'>
+                <div class='col-sm-4'></div>
+                <div class='col-sm-4'><h2><small><a class='text-body' href='https://github.com/amneher/twitty'>Twitty, my CLI Twitter client</a></small></h2></div>
+            </div>
+            <div class='row'>
+                <div class='col-sm-4'></div>
+                <div class='col-sm-4'><h2><small><a class='text-body' href='https://github.com/amneher/PoddyMcPodface'>Poddy McPodface, my Python Podcast App</a></small></h2></div>
+            </div>
+        </div>
+        {% endblock %}
+    </div>
+    <div class="jumbotron text-center" style="margin-bottom:0">
+        <p>Made with love in STL, MO</p>
+        <!-- links in footer rather than a separate 'contact me' page -->
+        <p><a href='https://github.com/amneher' class='text-body'>Github</a></p>
+        <p><a href='https://twitter.com/AMNeher' class='text-body'>Twitter</a></p>
+        <p><a href='https://creativecommons.org/licenses/by-sa/3.0/' class='text-body'>My Work is CC-BY-SA3.0 Licensed.</a></p>
+    </div>
+</body>
+</html>

@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bootstrap4',
+    'social_django',
     'blog',
     'home',
 ]
@@ -56,7 +58,7 @@ ROOT_URLCONF = 'ngnr.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['static/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -64,6 +66,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -129,3 +133,24 @@ STATIC_FILES_DIRS = [
     "/var/www/static/",
     "~/static/",
 ]
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.open_id.OpenIdAuth',
+    'social_core.backends.google.GoogleOpenId',
+    'social_core.backends.google.GoogleOAuth2',
+    'social_core.backends.google.GoogleOAuth',
+    'social_core.backends.twitter.TwitterOAuth',
+    'django.contrib.auth.backends.ModelBackend',
+    )
+
+LOGIN_URL = 'accounts/login'
+LOGOUT_URL = 'accounts/logout'
+LOGIN_REDIRECT_URL = 'home'
+
+# need to change for deployment
+SOCIAL_AUTH_GITHUB_KEY = 'd901c0d8f7f9f9ddd281'
+SOCIAL_AUTH_GITHUB_SECRET = '071633b16ad1e55a9735f0a73e8a01968b9071ed'
+
+SOCIAL_AUTH_LOGIN_ERROR_URL = '/settings/'
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/settings/'
+SOCIAL_AUTH_RAISE_EXCEPTIONS = False
