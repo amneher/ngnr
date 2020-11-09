@@ -1,0 +1,86 @@
+{% extends 'home.html' %}
+
+
+{% block nav %}
+<li class="nav-item">
+    <a class="nav-link" href={% url 'home' %}>Home</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href={% url 'blog' %}>Blog</a>
+</li>
+<li class="nav-item">
+    <!-- highlight active page -->
+    <a class="nav-link text-info" href={% url 'resume' %}>Resume</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href={% url 'login' %}>Log In</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href={% url 'signup' %}>Sign Up</a>
+</li>
+{% endblock %}
+
+
+        {% block content %}
+        <div class='container-fluid' style="margin-top: 30px">
+            <div class='row'>
+                <div class='col-sm-3'></div>
+                <div class='col-sm-6'>
+                    <h1>My Resume</h1>
+                    <h2><small>Areas of Experience</small></h2>
+                    <ul>
+                        <li>Python Programming</li>
+                        <li>Django Web Development</li>
+                        <li>Linux Server Administration</li>
+                        <li>BASH Scripting</li>
+                        <li>REST APIs</li>
+                        <li>Red Hat Linux</li>
+                    </ul>
+                    <h2><small>Work Experience</small></h2>
+                    <h3><small><a href='http://urbanchestnut.com/home/' class='text-body'>Urban Chestnut Brewing Company</a>, St. Louis, MO - Junior Software Developer - 06/2017-Present</small></h3>
+                    <ul>
+                        <li>Develop and maintain internal IoT applications and webapps in Python and PHP</li>
+                        <li>Administering company servers hosting company websites, fileservers, VPN, firewalls, etc.</li>
+                        <li>Assess and maintain security of the company networks and PCs using security tools like nmap, Wireshark, VPNs, 2FA, firewalls, VLANs.</li>
+                        <li>Advise management on new solutions and products with potential to increase productivity and reduce costs.</li>
+                    </ul>
+                    <h3><small><a href='https://www.ncr.com' class='text-body'>NCR</a>, St. Louis, MO - Customer Engineer 2 - 11/2015-06/2017</small></h3>
+                    <ul>
+                        <li>Diagnosed and resolved customer equipment issues in accordance with SLA, maximizing uptime.</li>
+                        <li>Repaired ATMs, POS systems, PCs, Servers, Printers, Networking Equipment, and various other equipment in the eastern Missouri, southern Illinois, and Chicago areas.</li>
+                        <li>Conducted hardware and software refreshes on POS control servers for a multi-billion dollar retailer.</li>        
+                    </ul>
+                    <h3><small>Tomlin Insurance, Jackson, MO - I.T. - 02/2012-01/2015</small></h3>
+                    <ul>
+                        <li>Built company intranet using IIS and static pages to facilitate the sharing of client information and company processes, resulting in users being able to access information without resorting to paper files or protracted googling sessions.</li>
+                        <li>Rebuilt company database of over 2 million records in MySQL to improve performance over MS Access.</li>
+                    </ul>
+                    <h2><small>Education</small></h2>
+                    <h3><small><a href='https://semo.edu' class='text-body'>Southeast Missouri State University</a>, Cape Girardeau, MO - 08/2007-12/2011</small></h3>
+                    <ul>
+                        <li>Bachelor of Arts, German Language and Culture, Minor in French Language and Culture</li>
+                        <li>Semester abroad at Friedrich Schiller University of Jena, Germany</li>
+                        <li>Summer programs at University of Angers, France and Vienna, Austria</li>
+                    </ul>
+                    <h3><small>Development Courses, Online - <a href='https://teamtreehouse.com/home' class='text-body'>Teamtreehouse.com</a>, <a href='https://www.lynda.com' class='text-body'>Lynda.com</a> - 2012-Present</small></h3>
+                    <ul>
+                        <li>Red Hat Linux Administration</li>
+                        <li>Python Development</li>
+                        <li>Django Web Development</li>
+                        <li>Flask Web Development</li>
+                        <li>PHP Development</li>
+                        <li>Javascript Development</li>
+                    </ul>
+                    <h2><small>Interests</small></h2>
+                    <ul>
+                        <li>Cycling</li>
+                        <li>Raspberry Pi</li>
+                        <li>Python Programming</li>
+                        <li>Music - I play Guitar, Bass, and I sing.</li>
+                        <li>Books - I read anything I can get my hands on.</li>
+                        <li>Writing</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {% endblock %}
