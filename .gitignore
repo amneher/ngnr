@@ -1,1 +1,4 @@
+blog/__pycache__/*
+home/__pycache__/*
+ngnr/__pycache__/*
 /static/admin
