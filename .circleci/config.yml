@@ -48,8 +48,8 @@ jobs:
           aws-access-key-id: AWS_ACCESS_KEY_ID
           aws-region: AWS_DEFAULT_REGION
       - aws-ecs/update-service:
-          family: '${MY_APP_PREFIX}-service'
-          cluster-name: '${MY_APP_PREFIX}-cluster'
+          family: 'ngnr-service'
+          cluster-name: 'ngnr-cluster'
           container-image-name-updates: 'container=ngnr_prod,tag=stable'
   setup-db:
     docker:
