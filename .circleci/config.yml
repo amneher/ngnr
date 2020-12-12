@@ -40,7 +40,7 @@ jobs:
       - aws-cli/install
       - aws-cli/setup:
           aws-access-key-id: AWS_ACCESS_KEY_ID
-          aws-region: AWS_REGION
+          aws-region: AWS_DEFAULT_REGION
       - aws-ecs/update-service:
           family: '${MY_APP_PREFIX}-service'
           cluster-name: '${MY_APP_PREFIX}-cluster'
