@@ -12,7 +12,7 @@ workflows:
       - test:
           context: 
             - amn_aws
-      - update-tag:
+      - deploy-to-ec2:
           context: 
             - amn_aws
   setup:
@@ -39,7 +39,7 @@ jobs:
           command: |
             pytest --version
           name: Test
-  update-tag:
+  deploy-to-ec2:
     docker:
       - image: 'cimg/python:3.8.5-node'
     steps:
@@ -47,10 +47,19 @@ jobs:
       - aws-cli/setup:
           aws-access-key-id: AWS_ACCESS_KEY_ID
           aws-region: AWS_DEFAULT_REGION
-      - aws-ecs/update-service:
-          family: 'ngnr-service'
-          cluster-name: 'ngnr-cluster'
-          container-image-name-updates: 'container=ngnr_prod,tag=stable'
+      - aws-ecs/run-task:
+          aws-region: AWS_DEFAULT_REGION
+          count: 1
+          awsvpc: true
+          subnet-ids: 'subnet-0571bb822fe1c944e'
+          security-group-ids: 'sg-073e406f34fe49e63'
+          assign-public-ip: true
+      - aws-ecs/run-task:
+          cluster: ngnr-cluster
+          task-definition: ngnr
+          awsvpc: true
+          launch-type: EC2
+
   setup-db:
     docker:
       - image: 'postgres'
@@ -61,3 +70,4 @@ jobs:
             export POSTGRES_PASSWORD=NGNR_DB_PASSWORD
             export POSTGRES_USER=ngnr
             export POSTGRES_DB=ngnr
+            echo 
