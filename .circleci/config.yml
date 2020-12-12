@@ -53,7 +53,7 @@ jobs:
           awsvpc: true
           subnet-ids: 'subnet-0571bb822fe1c944e'
           security-group-ids: 'sg-073e406f34fe49e63'
-          assign-public-ip: true
+          assign-public-ip: ENABLED
       - aws-ecs/run-task:
           cluster: ngnr-cluster
           task-definition: ngnr
