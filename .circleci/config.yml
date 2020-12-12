@@ -39,6 +39,8 @@ workflows:
   main:
     jobs:
       - test
-        context: amn_aws
+        context: 
+          - amn_aws
       - update-tag
-        context: amn_aws
+        context: 
+          - amn_aws
