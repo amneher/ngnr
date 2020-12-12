@@ -55,10 +55,9 @@ jobs:
     docker:
       - image: 'postgres'
     steps:
-      - install:
+      - run:
           name: Install postgres
           command: |
             export POSTGRES_PASSWORD=NGNR_DB_PASSWORD
             export POSTGRES_USER=ngnr
             export POSTGRES_DB=ngnr
-            
