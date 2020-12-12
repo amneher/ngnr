@@ -10,10 +10,10 @@ ENV PYTHONUNBUFFERED 1
 
 # install dependencies
 ARG DEBIAN_FRONTEND=noninteractive
-RUN apt-get update && apt-get install -y tzdata nginx postgresql-12 postgresql 
-RUN pip install --upgrade pip
+RUN apt-get update && apt-get install -y python3-pip tzdata nginx
+RUN pip3 install --upgrade pip
 COPY ./requirements.txt .
-RUN pip install -r requirements.txt
+RUN pip3 install -r requirements.txt
 
 # copy project
 COPY . .

@@ -15,6 +15,11 @@ workflows:
       - update-tag:
           context: 
             - amn_aws
+  setup:
+    jobs:
+      - setup-db:
+          context:
+            - amn_aws
 
 jobs:
   test:
@@ -45,4 +50,15 @@ jobs:
       - aws-ecs/update-service:
           family: '${MY_APP_PREFIX}-service'
           cluster-name: '${MY_APP_PREFIX}-cluster'
-          container-image-name-updates: 'container=${MY_APP_PREFIX}-service,tag=stable'
+          container-image-name-updates: 'container=ngnr_prod,tag=stable'
+  setup-db:
+    docker:
+      - image: 'postgres'
+    steps:
+      - install:
+          name: Install postgres
+          command: |
+            export POSTGRES_PASSWORD=NGNR_DB_PASSWORD
+            export POSTGRES_USER=ngnr
+            export POSTGRES_DB=ngnr
+            

@@ -84,9 +84,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'ngnr',
         'USER': 'ngnr',
-	    'PASSWORD': '9@ceGQoGJaiHm6$!gjVa',
-        'HOST': 'localhost',
-        'PORT': '',
+	    'PASSWORD': os.environ['NGNR_DB_PASSWORD'],
+        'HOST': os.environ['NGNR_DB_IP'],
+        'PORT': 5432,
     }
 }
 
