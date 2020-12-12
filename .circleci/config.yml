@@ -28,8 +28,8 @@ jobs:
     steps:
       - aws-cli/install
       - aws-cli/setup:
-          aws-access-key-id: AWS_ACCESS_KEY_ID
-          aws-region: AWS_REGION
+          aws-access-key-id: $AWS_ACCESS_KEY_ID
+          aws-region: $AWS_REGION
       - aws-ecs/update-service:
           family: '${MY_APP_PREFIX}-service'
           cluster-name: '${MY_APP_PREFIX}-cluster'
@@ -39,4 +39,6 @@ workflows:
   main:
     jobs:
       - test
+        context: amn_aws
       - update-tag
+        context: amn_aws
