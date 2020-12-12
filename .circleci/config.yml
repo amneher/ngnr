@@ -48,7 +48,6 @@ jobs:
           aws-access-key-id: AWS_ACCESS_KEY_ID
           aws-region: AWS_DEFAULT_REGION
       - aws-ecs/run-task:
-          aws-region: AWS_DEFAULT_REGION
           count: 1
           awsvpc: true
           subnet-ids: 'subnet-0571bb822fe1c944e'
