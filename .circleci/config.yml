@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  python: cimg/python:3.8-node
+  python: circleci/python@1.3.1
   aws-cli: circleci/aws-cli@0.1.4
   aws-ecs: circleci/aws-ecs@0.0.10
 jobs:
