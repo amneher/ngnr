@@ -1,1 +1,11 @@
+blog/__pycache__/*
+home/__pycache__/*
+ngnr/__pycache__/*
 /static/admin
+bin/
+lib/
+lib64
+pyvenv.cfg
+share/
+.ebextensions
+.gitignore
