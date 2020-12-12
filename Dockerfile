@@ -9,6 +9,7 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 # install dependencies
+ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y tzdata nginx postgresql-12 postgresql 
 RUN pip install --upgrade pip
 COPY ./requirements.txt .
