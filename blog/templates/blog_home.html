@@ -1,45 +1,29 @@
 {% extends 'home.html' %}
 
-{% block content %}
-
-
-	{% for post in posts %}
-		<div>
-			<h3>{{ post.title }}</h3>
-			<h4>{{ post.author }} - {{ post.created }}</h4>
-			<p>{{ post.content }}</p>
-		</div>
-	{% endfor %}
-
-
-
-
-{% endblock %}
-
  {% block content %}
         <div class='container-fluid' style="margin-top: 30px">
             <div class='row'>
                 <div class='col-sm-4'></div>
                 <div class='col-sm-4'>
                     {% for post in posts %}
-                        <h1><small>{{ post.title }}</small></h1>
+                        <h1><b>{{ post.title }}</b></h1>
                         <p>{{ post.created }}</p>
                         <p>{{ post.content }}</p>
                         <p>{{ post.author }}</p>
-                        {% get_comment_count for post as comment_count %}
-                        <p>{{ comment_count }} comments on this post.</p>
-                        {% if comment_count %}
+                       <!--  get_comment_count for post as comment_count 
+                        <p> comment_count  comments on this post.</p>
+                         if comment_count 
                         <hr />
                         <div class="comments">
-                            {% render_comment_list for post %}
+                             render_comment_list for post 
                         </div>
-                        {% endif %}
+                         endif 
                         <div class="card card-block mb-5">
                             <div class="card-body">
                                 <h4 class="card-title text-center pb-3">Post your comment</h4>
-                                {% render_comment_form for post %}
+                                 render_comment_form for post 
                             </div>
-                        </div>
+                        </div>-->
                     {% endfor %}
                 </div>
         {% endblock %}
