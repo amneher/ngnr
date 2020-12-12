@@ -25,7 +25,7 @@ SECRET_KEY = '19mgsmsk5^=2nl7g)5+bqze!d8t9!2_k=s3r^5@m4y7lg+#x%j'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -84,9 +84,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'ngnr',
         'USER': 'ngnr',
-	    'PASSWORD': '9@ceGQoGJaiHm6$!gjVa',
-        'HOST': 'localhost',
-        'PORT': '',
+	    'PASSWORD': os.environ['NGNR_DB_PASSWORD'],
+        'HOST': os.environ['NGNR_DB_IP'],
+        'PORT': 5432,
     }
 }
 

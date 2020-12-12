@@ -2,9 +2,27 @@ version: 2.1
 
 orbs:
   python: circleci/python@1.3.1
+  aws-cli: circleci/aws-cli@1.3.1
+  aws-ecs: circleci/aws-ecs@1.4.0
+  aws-ecr: circleci/aws-ecr@6.15.1
+
+workflows:
+  main:
+    jobs:
+      - test:
+          context: 
+            - amn_aws
+      - deploy-to-ec2:
+          context: 
+            - amn_aws
+  setup:
+    jobs:
+      - setup-db:
+          context:
+            - amn_aws
 
 jobs:
-  build:
+  test:
     executor: python/default
     steps:
       - checkout
@@ -21,8 +39,32 @@ jobs:
           command: |
             pytest --version
           name: Test
-          
-workflows:
-  main:
-    jobs:
-      - build
+  deploy-to-ec2:
+    docker:
+      - image: 'cimg/python:3.8.5-node'
+    steps:
+      - aws-cli/install
+      - aws-cli/setup:
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-region: AWS_DEFAULT_REGION
+      - aws-ecs/run-task:
+          count: 1
+          awsvpc: true
+          subnet-ids: 'subnet-0571bb822fe1c944e'
+          security-group-ids: 'sg-073e406f34fe49e63'
+          assign-public-ip: ENABLED
+          cluster: ngnr-cluster
+          task-definition: ngnr
+          launch-type: EC2
+
+  setup-db:
+    docker:
+      - image: 'postgres'
+    steps:
+      - run:
+          name: Install postgres
+          command: |
+            export POSTGRES_PASSWORD=NGNR_DB_PASSWORD
+            export POSTGRES_USER=ngnr
+            export POSTGRES_DB=ngnr
+            echo 
